@@ -20,10 +20,10 @@ def validate_html(html):
 	# but arbitrary text located between the html tags
 
 	#checks to see if all brackets are closed properly first
-	par_checker_input=_extract_tags(html,True)
+	#par_checker_input=_extract_tags(html,True)
 	#print('par_checker_inputs:',par_checker_input)
 	
-	boolean_output=_is_closed_properly(par_checker_input)
+	#boolean_output=_is_closed_properly(par_checker_input)
 	#print('boolean_output:',boolean_output)
 	
 	#print('\n')
@@ -31,16 +31,17 @@ def validate_html(html):
 	
 	
 	#checks to see if all html tags have matching closing '/' tags 
-	par_checker_input=_extract_tags(html,False)
+	par_checker_input=_extract_tags(html)
 	#print('inputs:',par_checker_input)
 	
 	html_checker_output=_closing_html_checker(par_checker_input)
 	#print('html_checker_output:',html_checker_output)
 	
+	return html_checker_output
 	
-	if boolean_output and html_checker_output:
-		return True
-	return False
+	#if boolean_output and html_checker_output:
+		#return True
+	#return False
 	
 	#print(par_checker_input)
 	#return parChecker(par_checker_input)
@@ -102,7 +103,7 @@ def _parChecker(symbolString):
 
 
 
-def _extract_tags(html,only_closing_ops):
+def _extract_tags(html):
 	'''
 	This is a helper function for `validate_html`.
 	By convention in Python, helper functions that are not meant to be used directly by the user are prefixed with an underscore.
@@ -122,7 +123,7 @@ def _extract_tags(html,only_closing_ops):
 		#if switch==1:
 			#print('switch on, adding char:',char)
 			#output_string+=(char)
-		if char == '/' and not only_closing_ops and html[index-1]=='<':
+		if char == '/' and html[index-1]=='<':
 			output_string+=char
 		if char == '<':
 			#print('turning switch on, adding:',char)
@@ -138,6 +139,27 @@ def _extract_tags(html,only_closing_ops):
 	
 	return output_string
 
+	#switch=0
+	#output_string=''
+	#for index, char in enumerate(html):
+		##if switch==1:
+			##print('switch on, adding char:',char)
+			##output_string+=(char)
+		#if char == '/' and not only_closing_ops and html[index-1]=='<':
+			#output_string+=char
+		#if char == '<':
+			##print('turning switch on, adding:',char)
+			#switch=1
+			#output_string+=char
+		#if char == '>':
+			##print('turning switch off, adding space:')
+			#switch=0
+			#output_string+=char
+			#output_string+=(' ')
+	##print('stripping string and outputting', output_string)
+	#output_string=output_string.split()
+	
+	#return output_string
 
 #print(validate_html('<strong>example</strong>'))
 #print(validate_html('<strong>example'))
