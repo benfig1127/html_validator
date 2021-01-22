@@ -19,8 +19,8 @@ def validate_html(html):
 				encoding_list.append('B')
 			
 	
-	print('html tags:',html_tags)
-	print('encodings:',encoding_list)
+	#print('html tags:',html_tags)
+	#print('encodings:',encoding_list)
 	
 	stack=[]
 	balanced=True
