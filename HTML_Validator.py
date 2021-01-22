@@ -115,7 +115,7 @@ def _extract_tags(html):
 
 
 #print(validate_html('<strong>example<strong>example<strong>example</strong>'))
-print(validate_html('<strong><b></strong></b>'))
+#print(validate_html('<strong><b></strong></b>'))
 
 
 
